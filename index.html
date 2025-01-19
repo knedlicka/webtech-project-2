@@ -41,6 +41,36 @@
           </ul>
         </div>
       </nav>
+
+      <script>
+        document.addEventListener('DOMContentLoaded', function () {
+            const isLoggedIn = localStorage.getItem('loggedIn') === 'true';
+    
+            // Update the navbar based on login status
+            const navbar = document.querySelector('.navbar-nav');
+            if (isLoggedIn) {
+                navbar.innerHTML += `
+                    <li class="nav-item">
+                        <a class="nav-link" href="#" id="logout-link">Logout</a>
+                    </li>
+                `;
+            } else {
+                navbar.innerHTML += `
+                    <li class="nav-item">
+                        <a class="nav-link" href="login.html">Log in</a>
+                    </li>
+                `;
+            }
+            // Handle logout
+            const logoutLink = document.getElementById('logout-link');
+            if (logoutLink) {
+                logoutLink.addEventListener('click', function () {
+                    localStorage.removeItem('loggedIn'); // Clear login status
+                    window.location.reload(); // Refresh the page
+                });
+            }
+        });
+    </script>
 </body>
 
 </html>
