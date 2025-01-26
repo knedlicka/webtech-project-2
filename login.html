@@ -55,12 +55,10 @@
     </div>
     <script>
         document.getElementById('login-form').addEventListener('submit', function (e) {
-            e.preventDefault(); // Prevent form submission
+            e.preventDefault(); 
     
-            // Storing login status in localStorage
             localStorage.setItem('loggedIn', 'true');
-    
-            // To the main page
+
             window.location.href = "index.html";
         });
     </script>
