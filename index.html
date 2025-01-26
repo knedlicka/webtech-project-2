@@ -166,7 +166,7 @@
     document.addEventListener('DOMContentLoaded', function () {
       const isLoggedIn = localStorage.getItem('loggedIn') === 'true';
 
-      // Update the navbar based on login status
+  //---
       const navbar = document.querySelector('.navbar-nav');
       if (isLoggedIn) {
         navbar.innerHTML += `
@@ -181,7 +181,7 @@
                     </li>
                 `;
       }
-      // Handle logout
+ //---
       const logoutLink = document.getElementById('logout-link');
       if (logoutLink) {
         logoutLink.addEventListener('click', function () {
@@ -189,6 +189,11 @@
           window.location.reload();
         });
       }
+ //---
+      const loginButtonContainer = document.querySelector('.container .btn');
+  if (isLoggedIn && loginButtonContainer) {
+    loginButtonContainer.style.display = 'none'; 
+  }
     });
   </script>
 </body>
