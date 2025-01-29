@@ -115,6 +115,8 @@
 
 
 <script>
+  const productKey = `events-${window.location.pathname}`;
+
   document.addEventListener('DOMContentLoaded', function () {
     const calendarEl = document.getElementById('calendar');
     const tooltip = document.createElement('div');
@@ -227,18 +229,18 @@
     function saveEvent(id, title, start, end, password) {
       const events = getSavedEvents();
       events.push({ id, title, start: start.toISOString(), end: end.toISOString(), password });
-      localStorage.setItem('events-product-1', JSON.stringify(events));
+      localStorage.setItem(productKey, JSON.stringify(events));
     }
 
     function getSavedEvents() {
-      const events = localStorage.getItem('events-product-1');
+      const events = localStorage.getItem(productKey);
       return events ? JSON.parse(events) : [];
     }
 
     function deleteEvent(eventId) {
       const events = getSavedEvents();
       const updatedEvents = events.filter(event => event.id !== eventId);
-      localStorage.setItem('events-product-1', JSON.stringify(updatedEvents));
+      localStorage.setItem(productKey, JSON.stringify(updatedEvents));
     }
 
     function generateEventId() {

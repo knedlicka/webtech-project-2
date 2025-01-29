@@ -1,0 +1,188 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <!-- Bootstrap -->
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
+
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar/index.global.min.js"></script>
+
+    <style>
+      html,
+      body {
+        height: 100%;
+      }
+
+      body {
+        display: flex;
+        flex-direction: column;
+      }
+
+      footer {
+        margin-top: auto;
+      }
+    </style>
+  </head>
+
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="../index.html">Navbar</a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
+        <span class="navbar-toggler-icon"></span>
+      </button>
+
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+          <li class="nav-item active">
+            <a class="nav-link" href="../index.html"
+              >Home <span class="sr-only">(current)</span></a
+            >
+          </li>
+        </ul>
+      </div>
+    </nav>
+
+    <div class="container mt-5 bg-light p-4 rounded shadow">
+      <h2 class="text-center mb-4">Room Reservation</h2>
+      <div class="card p-3 shadow-lg">
+        <div class="row align-items-center">
+          <div class="col-md-4">
+            <img
+              src="../photos/class1.jpg"
+              class="img-fluid rounded"
+              alt="Room Image"
+            />
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h4 class="card-title">Classroom 202 (Languages Classroom)</h4>
+              <p class="card-text">
+                Capacity: <span id="roomCapacity">25</span> students
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+
+      <h3 class="mt-4">Schedule</h3>
+      <div id="schedule" class="list-group">
+        <button class="list-group-item list-group-item-action" onclick="showReservationForm('English Grammar')">English Grammar (09:00 - 10:00)</button>
+        <button class="list-group-item list-group-item-action" onclick="showReservationForm('French Basics')">French Basics (10:30 - 11:30)</button>
+        <button class="list-group-item list-group-item-action" onclick="showReservationForm('Spanish Conversation')">Spanish Conversation (12:00 - 13:00)</button>
+        <button class="list-group-item list-group-item-action" onclick="showReservationForm('German for Beginners')">German for Beginners (14:00 - 15:00)</button>
+        <button class="list-group-item list-group-item-action" onclick="showReservationForm('Portuguese Advanced')">Portuguese Advanced (15:30 - 16:30)</button>
+      </div>
+
+      <div id="reservationFormContainer" class="mt-4" style="display: none">
+        <h3>Reserve a Seat for <span id="selectedLesson"></span></h3>
+        <div id="seats" class="d-flex flex-wrap" style="max-width: 300px"></div>
+      </div>
+    </div>
+
+    <footer class="bg-dark text-white py-4 mt-5">
+      <div class="container text-center">
+        <p class="mb-0">
+          &copy; 2025 Reservations App |
+          <span class="fw-semibold">NB & AL</span>
+        </p>
+      </div>
+    </footer>
+
+    <script>
+      let reservedSeats = {};
+
+      function showReservationForm(lesson) {
+        document.getElementById("selectedLesson").innerText = lesson;
+        document.getElementById("reservationFormContainer").style.display = "block";
+        generateSeats(lesson);
+      }
+
+      function generateSeats(lesson) {
+        const seatContainer = document.getElementById("seats");
+        seatContainer.innerHTML = "";
+        for (let i = 1; i <= 25; i++) {
+          const seat = document.createElement("div");
+          seat.classList.add("seat", "m-1", "p-3", "border", "rounded", "text-center", "d-flex", "align-items-center", "justify-content-center", "font-weight-bold");
+          seat.style.width = "40px";
+          seat.style.height = "40px";
+          seat.style.cursor = "pointer";
+          seat.innerText = i;
+          seat.style.backgroundColor = reservedSeats[lesson] && reservedSeats[lesson][i] ? "#b0666d" : "#7fd466";
+          seat.onclick = reservedSeats[lesson] && reservedSeats[lesson][i] ? () => cancelReservation(i, lesson) : () => reserveSeat(i, lesson);
+          seatContainer.appendChild(seat);
+          if (i % 5 === 0) seatContainer.appendChild(document.createElement("div")).style.width = "100%";
+        }
+      }
+
+      function reserveSeat(seatNumber, lesson) {
+        const userName = prompt("Enter your name to reserve seat " + seatNumber);
+        if (userName) {
+          reservedSeats[lesson] = reservedSeats[lesson] || {};
+          reservedSeats[lesson][seatNumber] = userName;
+          alert(`${userName}, your seat ${seatNumber} has been reserved for ${lesson}.`);
+          generateSeats(lesson);
+        }
+      }
+
+      function cancelReservation(seatNumber, lesson) {
+        const reservedBy = reservedSeats[lesson][seatNumber];
+        if (prompt(`Enter your name to cancel the reservation for seat ${seatNumber}`) === reservedBy) {
+          delete reservedSeats[lesson][seatNumber];
+          alert(`Reservation for seat ${seatNumber} has been cancelled.`);
+          generateSeats(lesson);
+        }
+      }
+      document.addEventListener('DOMContentLoaded', function () {
+      const isLoggedIn = localStorage.getItem('loggedIn') === 'true';
+
+      const navbar = document.querySelector('.navbar-nav');
+      if (isLoggedIn) {
+        navbar.innerHTML += `<li class="nav-item"><a class="nav-link" href="#" id="logout-link">Logout</a></li>`;
+      }
+      else {
+        navbar.innerHTML += `<li class="nav-item"><a class="nav-link" href="/login.html">Log in</a></li>`;
+      }
+      const logoutLink = document.getElementById('logout-link');
+      if (logoutLink) {
+        logoutLink.addEventListener('click', function () {
+          localStorage.removeItem('loggedIn');
+          window.location.reload();
+        });
+      }
+
+      // Hide the "please log in to reserve" message if logged in already
+      const loginMessageContainer = document.querySelector('.login-message-container');
+      if (isLoggedIn && loginMessageContainer) {
+        loginMessageContainer.style.display = 'none';
+      }
+    });
+    </script>
+  </body>
+</html>
