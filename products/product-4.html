@@ -1,81 +1,107 @@
 <!DOCTYPE html>
 <html>
-
-<head>
+  <head>
     <title>Reservation app|Microphone</title>
     <!-- Bootstrap -->
-    <link rel="stylesheet" href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
-    integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm" crossorigin="anonymous">
-    <script src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
-            integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
-            crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
-            integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
-            crossorigin="anonymous"></script>
-    <script src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
-            integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
-            crossorigin="anonymous"></script>
+    <link
+      rel="stylesheet"
+      href="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/css/bootstrap.min.css"
+      integrity="sha384-Gn5384xqQ1aoWXA+058RXPxPg6fy4IWvTNh0E263XmFcJlSAwiGgFAW/dAiS6JXm"
+      crossorigin="anonymous"
+    />
+    <script
+      src="https://code.jquery.com/jquery-3.2.1.slim.min.js"
+      integrity="sha384-KJ3o2DKtIkvYIK3UENzmM7KCkRr/rE9/Qpg6aAZGJwFDMVNA/GpGFF93hXpG5KkN"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/popper.js@1.12.9/dist/umd/popper.min.js"
+      integrity="sha384-ApNbgh9B+Y1QKtv3Rn7W3mgPxhU9K/ScQsAP7hUibX39j7fakFPskvXusvfa0b4Q"
+      crossorigin="anonymous"
+    ></script>
+    <script
+      src="https://cdn.jsdelivr.net/npm/bootstrap@4.0.0/dist/js/bootstrap.min.js"
+      integrity="sha384-JZR6Spejh4U02d8jOt6vLEHfe/JQGiRRSQQxSfFWpi1MquVdAyjUar5+76PVCmYl"
+      crossorigin="anonymous"
+    ></script>
 
-    <script src='https://cdn.jsdelivr.net/npm/fullcalendar/index.global.min.js'></script>
+    <script src="https://cdn.jsdelivr.net/npm/fullcalendar/index.global.min.js"></script>
 
     <style>
-        html, body {
-            height: 100%;
-        }
+      html,
+      body {
+        height: 100%;
+      }
 
-        body {
-            display: flex;
-            flex-direction: column;
-        }
+      body {
+        display: flex;
+        flex-direction: column;
+      }
 
-        footer {
-            margin-top: auto;
-        }
+      footer {
+        margin-top: auto;
+      }
 
-        .highlight {
-            font-size: 1.5rem;
-            font-weight: bold;
-        }
+      .highlight {
+        font-size: 1.5rem;
+        font-weight: bold;
+      }
 
-        .calendar {
-            margin-top: 20px;
-        }
+      .calendar {
+        margin-top: 20px;
+      }
 
-        .custom-tooltip {
-            position: absolute;
-            background-color: #333;
-            color: #fff;
-            padding: 5px 10px;
-            border-radius: 5px;
-            font-size: 0.9rem;
-            white-space: nowrap;
-            z-index: 1000;
-            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
-            display: none;
-            max-width: 270px;
-        }
+      .custom-tooltip {
+        position: absolute;
+        background-color: #333;
+        color: #fff;
+        padding: 5px 10px;
+        border-radius: 5px;
+        font-size: 0.9rem;
+        white-space: nowrap;
+        z-index: 1000;
+        box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+        display: none;
+        max-width: 270px;
+      }
     </style>
-</head>
+  </head>
 
-<body>
-<nav class="navbar navbar-expand-lg navbar-dark bg-dark">
-    <a class="navbar-brand" href="/index.html">Navbar</a>
-    <button class="navbar-toggler" type="button" data-toggle="collapse" data-target="#navbarSupportedContent"
-            aria-controls="navbarSupportedContent" aria-expanded="false" aria-label="Toggle navigation">
+  <body>
+    <nav class="navbar navbar-expand-lg navbar-dark bg-dark">
+      <a class="navbar-brand" href="/index.html">
+        <img
+          src="../photos/reservation-high-resolution-logo-removebg-preview.png"
+          alt="Logo"
+          width="100"
+          height="70"
+        />
+      </a>
+      <button
+        class="navbar-toggler"
+        type="button"
+        data-toggle="collapse"
+        data-target="#navbarSupportedContent"
+        aria-controls="navbarSupportedContent"
+        aria-expanded="false"
+        aria-label="Toggle navigation"
+      >
         <span class="navbar-toggler-icon"></span>
-    </button>
+      </button>
 
-    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+      <div class="collapse navbar-collapse" id="navbarSupportedContent">
         <ul class="navbar-nav ml-auto">
-            <li class="nav-item active">
-                <a class="nav-link" href="/index.html">Home <span class="sr-only">(current)</span></a>
-            </li>
+          <li class="nav-item active">
+            <a class="nav-link" href="/index.html"
+              >Home <span class="sr-only">(current)</span></a
+            >
+          </li>
         </ul>
-    </div>
-</nav>
+      </div>
+    </nav>
 
-<div class="container my-5">
-    <div class="row align-items-center mb-5">
+    <div class="container my-5">
+      <div class="row align-items-center mb-5">
         <div class="col-md-6">
           <div class="row">
             <div class="col-12 d-flex">
@@ -84,197 +110,223 @@
               </a>
             </div>
           </div>
-            <h2 class="text-primary fw-bold mb-3">Condenser microphone Rode M2</h2>
-            <p class="text-muted">
-                The M2 is a condenser microphone that delivers a full frequency response for exceptionally
-                detailed voice reproduction on stage.
-            </p>
+          <h2 class="text-primary fw-bold mb-3">
+            Condenser microphone Rode M2
+          </h2>
+          <p class="text-muted">
+            The M2 is a condenser microphone that delivers a full frequency
+            response for exceptionally detailed voice reproduction on stage.
+          </p>
         </div>
         <div class="col-md-6 text-center">
-            <img src="../photos/mic.jpg" alt="Audio Studio" class="img-fluid rounded shadow-lg">
+          <img
+            src="../photos/mic.jpg"
+            alt="Audio Studio"
+            class="img-fluid rounded shadow-lg"
+          />
         </div>
-    </div>
+      </div>
 
-    <div class="row text-center mb-4 login-message-container">
+      <div class="row text-center mb-4 login-message-container">
         <div class="col-12">
-            <p class="text-secondary fs-5">Log in to perform a reservation</p>
+          <p class="text-secondary fs-5">Log in to perform a reservation</p>
         </div>
-    </div>
+      </div>
 
-    <div class="row">
+      <div class="row">
         <div class="col-12">
-            <div id="calendar" class="calendar p-3 border rounded shadow-sm"></div>
+          <div
+            id="calendar"
+            class="calendar p-3 border rounded shadow-sm"
+          ></div>
         </div>
+      </div>
     </div>
-</div>
 
-<footer class="bg-dark text-white py-4 mt-5">
-    <div class="container text-center">
-        <p class="mb-0">&copy; 2025 Reservations App | <span class="fw-semibold">NB & AL</span></p>
-    </div>
-</footer>
+    <footer class="bg-dark text-white py-4 mt-5">
+      <div class="container text-center">
+        <p class="mb-0">
+          &copy; 2025 Reservations App |
+          <span class="fw-semibold">NB & AL</span>
+        </p>
+      </div>
+    </footer>
 
+    <script>
+      const productKey = `events-${window.location.pathname}`;
 
+      document.addEventListener("DOMContentLoaded", function () {
+        const calendarEl = document.getElementById("calendar");
+        const tooltip = document.createElement("div");
+        tooltip.className = "custom-tooltip";
+        document.body.appendChild(tooltip);
 
-<script>
-  const productKey = `events-${window.location.pathname}`;
-
-  document.addEventListener('DOMContentLoaded', function () {
-    const calendarEl = document.getElementById('calendar');
-    const tooltip = document.createElement('div');
-    tooltip.className = 'custom-tooltip';
-    document.body.appendChild(tooltip);
-
-    const calendar = new FullCalendar.Calendar(calendarEl, {
-      initialView: 'dayGridMonth',
-      displayEventEnd: true,
-      eventDisplay: "block",
-      eventTimeFormat: {
-        hour: '2-digit',
-        minute: '2-digit',
-        meridiem: 'short'
-      },
-      dateClick: function (info) {
-        const isLoggedIn = localStorage.getItem('loggedIn') === 'true';
-        if (!isLoggedIn) {
-          alert("You have to log in to perform a reservation");
-          return;
-        }
-
-        const title = prompt('Your name:');
-        if (title) {
-          const startTime = prompt('Enter start time (e.g., 10:00):');
-          const endTime = prompt('Enter end time (e.g., 16:00):');
-          if (startTime && endTime) {
-            const startDate = new Date(info.dateStr + ' ' + startTime);
-            const endDate = new Date(info.dateStr + ' ' + endTime);
-
-            if (startDate >= endDate) {
-              alert('End time must be after start time.');
+        const calendar = new FullCalendar.Calendar(calendarEl, {
+          initialView: "dayGridMonth",
+          displayEventEnd: true,
+          eventDisplay: "block",
+          eventTimeFormat: {
+            hour: "2-digit",
+            minute: "2-digit",
+            meridiem: "short",
+          },
+          dateClick: function (info) {
+            const isLoggedIn = localStorage.getItem("loggedIn") === "true";
+            if (!isLoggedIn) {
+              alert("You have to log in to perform a reservation");
               return;
             }
 
-            const password = prompt('Set a password for this reservation:');
-            if (password) {
-              const id = generateEventId();
-              calendar.addEvent({
-                id,
-                title,
-                start: startDate,
-                end: endDate,
-                allDay: false
-              });
+            const title = prompt("Your name:");
+            if (title) {
+              const startTime = prompt("Enter start time (e.g., 10:00):");
+              const endTime = prompt("Enter end time (e.g., 16:00):");
+              if (startTime && endTime) {
+                const startDate = new Date(info.dateStr + " " + startTime);
+                const endDate = new Date(info.dateStr + " " + endTime);
 
-              saveEvent(id, title, startDate, endDate, password);
-            } else {
-              alert('Password is required to create a reservation.');
+                if (startDate >= endDate) {
+                  alert("End time must be after start time.");
+                  return;
+                }
+
+                const password = prompt("Set a password for this reservation:");
+                if (password) {
+                  const id = generateEventId();
+                  calendar.addEvent({
+                    id,
+                    title,
+                    start: startDate,
+                    end: endDate,
+                    allDay: false,
+                  });
+
+                  saveEvent(id, title, startDate, endDate, password);
+                } else {
+                  alert("Password is required to create a reservation.");
+                }
+              }
             }
-          }
-        }
-      },
-      events: function (info, successCallback, failureCallback) {
-        const events = getSavedEvents();
-        successCallback(events);
-      },
-      eventMouseEnter: function (info) {
-        tooltip.innerHTML = `
+          },
+          events: function (info, successCallback, failureCallback) {
+            const events = getSavedEvents();
+            successCallback(events);
+          },
+          eventMouseEnter: function (info) {
+            tooltip.innerHTML = `
           <strong>${info.event.title}</strong><br>
-          ${formatDateTime(info.event.start)} - ${formatDateTime(info.event.end)}
+          ${formatDateTime(info.event.start)} - ${formatDateTime(
+              info.event.end
+            )}
         `;
-        tooltip.style.display = 'block';
-        tooltip.style.left = info.jsEvent.pageX + 10 + 'px';
-        tooltip.style.top = info.jsEvent.pageY + 10 + 'px';
-      },
-      eventMouseLeave: function () {
-        tooltip.style.display = 'none';
-      },
-      eventClick: function (info) {
-        const password = prompt(`Enter the password to cancel the reservation: "${info.event.title}"`);
-        if (password) {
-          const events = getSavedEvents();
-          const eventData = events.find(event => event.id === info.event.id);
-          if (eventData && eventData.password === password) {
-            if (confirm(`Are you sure you want to cancel the reservation: "${info.event.title}"?`)) {
-              info.event.remove();
-              deleteEvent(info.event.id);
-              alert('Reservation canceled successfully.');
+            tooltip.style.display = "block";
+            tooltip.style.left = info.jsEvent.pageX + 10 + "px";
+            tooltip.style.top = info.jsEvent.pageY + 10 + "px";
+          },
+          eventMouseLeave: function () {
+            tooltip.style.display = "none";
+          },
+          eventClick: function (info) {
+            const password = prompt(
+              `Enter the password to cancel the reservation: "${info.event.title}"`
+            );
+            if (password) {
+              const events = getSavedEvents();
+              const eventData = events.find(
+                (event) => event.id === info.event.id
+              );
+              if (eventData && eventData.password === password) {
+                if (
+                  confirm(
+                    `Are you sure you want to cancel the reservation: "${info.event.title}"?`
+                  )
+                ) {
+                  info.event.remove();
+                  deleteEvent(info.event.id);
+                  alert("Reservation canceled successfully.");
+                }
+              } else {
+                alert("Incorrect password. Unable to cancel the reservation.");
+              }
             }
-          } else {
-            alert('Incorrect password. Unable to cancel the reservation.');
+          },
+        });
+
+        calendar.render();
+
+        document.addEventListener("mousemove", (e) => {
+          if (tooltip.style.display === "block") {
+            tooltip.style.left = e.pageX + 10 + "px";
+            tooltip.style.top = e.pageY + 10 + "px";
           }
+        });
+
+        function formatDateTime(date) {
+          if (!date) return "";
+          const options = {
+            hour: "2-digit",
+            minute: "2-digit",
+            hour12: true,
+            weekday: "short",
+            day: "numeric",
+            month: "short",
+          };
+          return date.toLocaleString("en-US", options);
         }
-      }
-    });
 
-    calendar.render();
+        function saveEvent(id, title, start, end, password) {
+          const events = getSavedEvents();
+          events.push({
+            id,
+            title,
+            start: start.toISOString(),
+            end: end.toISOString(),
+            password,
+          });
+          localStorage.setItem(productKey, JSON.stringify(events));
+        }
 
-    document.addEventListener('mousemove', (e) => {
-      if (tooltip.style.display === 'block') {
-        tooltip.style.left = e.pageX + 10 + 'px';
-        tooltip.style.top = e.pageY + 10 + 'px';
-      }
-    });
+        function getSavedEvents() {
+          const events = localStorage.getItem(productKey);
+          return events ? JSON.parse(events) : [];
+        }
 
-    function formatDateTime(date) {
-      if (!date) return '';
-      const options = {
-        hour: '2-digit',
-        minute: '2-digit',
-        hour12: true,
-        weekday: 'short',
-        day: 'numeric',
-        month: 'short'
-      };
-      return date.toLocaleString('en-US', options);
-    }
+        function deleteEvent(eventId) {
+          const events = getSavedEvents();
+          const updatedEvents = events.filter((event) => event.id !== eventId);
+          localStorage.setItem(productKey, JSON.stringify(updatedEvents));
+        }
 
-    function saveEvent(id, title, start, end, password) {
-      const events = getSavedEvents();
-      events.push({ id, title, start: start.toISOString(), end: end.toISOString(), password });
-      localStorage.setItem(productKey, JSON.stringify(events));
-    }
-
-    function getSavedEvents() {
-      const events = localStorage.getItem(productKey);
-      return events ? JSON.parse(events) : [];
-    }
-
-    function deleteEvent(eventId) {
-      const events = getSavedEvents();
-      const updatedEvents = events.filter(event => event.id !== eventId);
-      localStorage.setItem(productKey, JSON.stringify(updatedEvents));
-    }
-
-    function generateEventId() {
-      return '_' + Math.random().toString(36).substr(2, 9);
-    }
-  });
-
-  document.addEventListener('DOMContentLoaded', function () {
-    const isLoggedIn = localStorage.getItem('loggedIn') === 'true';
-
-    const navbar = document.querySelector('.navbar-nav');
-    if (isLoggedIn) {
-      navbar.innerHTML += `<li class="nav-item"><a class="nav-link" href="#" id="logout-link">Logout</a></li>`;
-    }
-    else {
-      navbar.innerHTML += `<li class="nav-item"><a class="nav-link" href="/login.html">Log in</a></li>`;
-    }
-    const logoutLink = document.getElementById('logout-link');
-    if (logoutLink) {
-      logoutLink.addEventListener('click', function () {
-        localStorage.removeItem('loggedIn');
-        window.location.reload();
+        function generateEventId() {
+          return "_" + Math.random().toString(36).substr(2, 9);
+        }
       });
-    }
 
-    // Hide the "please log in to reserve" message if logged in already
-    const loginMessageContainer = document.querySelector('.login-message-container');
-    if (isLoggedIn && loginMessageContainer) {
-      loginMessageContainer.style.display = 'none';
-    }
-  });
-</script>
+      document.addEventListener("DOMContentLoaded", function () {
+        const isLoggedIn = localStorage.getItem("loggedIn") === "true";
 
-</body>
+        const navbar = document.querySelector(".navbar-nav");
+        if (isLoggedIn) {
+          navbar.innerHTML += `<li class="nav-item"><a class="nav-link" href="#" id="logout-link">Logout</a></li>`;
+        } else {
+          navbar.innerHTML += `<li class="nav-item"><a class="nav-link" href="/login.html">Log in</a></li>`;
+        }
+        const logoutLink = document.getElementById("logout-link");
+        if (logoutLink) {
+          logoutLink.addEventListener("click", function () {
+            localStorage.removeItem("loggedIn");
+            window.location.reload();
+          });
+        }
+
+        // Hide the "please log in to reserve" message if logged in already
+        const loginMessageContainer = document.querySelector(
+          ".login-message-container"
+        );
+        if (isLoggedIn && loginMessageContainer) {
+          loginMessageContainer.style.display = "none";
+        }
+      });
+    </script>
+  </body>
 </html>
